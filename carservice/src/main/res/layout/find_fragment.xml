@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="60sp"
+        android:background="#0099ff"
+        android:gravity="center"
+        android:text="@string/find"
+        android:textColor="#fff"
+        android:textSize="18sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:background="#0066cc"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+
+                android:id="@+id/tv_city"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:text="@string/zhengzhou"
+                android:textColor="#fff"
+                android:textSize="13sp" />
+
+            <ImageView
+                android:layout_width="3dp"
+                android:layout_height="3dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/bt1"></ImageView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/today_oil_price"
+                android:textColor="#fff"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="17dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="85dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/color_big_box"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:text="90"
+                        android:textColor="#fff"
+                        android:textSize="15sp" />
+
+                    <TextView style="@style/井" />
+
+                    <TextView
+                        android:layout_width="2dp"
+                        android:layout_height="13dp"
+                        android:layout_marginTop="2.5dp"
+                        android:background="@drawable/blue_box" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_90_price"
+                    style="@style/textPrice"
+                    android:text="6.03" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="85dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/color_big_box"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:text="93"
+                        android:textColor="#fff"
+                        android:textSize="15sp" />
+
+                    <TextView style="@style/井" />
+
+                    <TextView
+                        android:layout_width="2dp"
+                        android:layout_height="13dp"
+                        android:layout_marginTop="2.5dp"
+                        android:background="@drawable/orange_box" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_93_price"
+                    style="@style/textPrice"
+                    android:text="6.39" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="85dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/color_big_box"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:text="97"
+                        android:textColor="#fff"
+                        android:textSize="15sp" />
+
+                    <TextView style="@style/井" />
+
+                    <TextView
+                        android:layout_width="2dp"
+                        android:layout_height="13dp"
+                        android:layout_marginTop="2.5dp"
+                        android:background="@drawable/green_box" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_97_price"
+                    style="@style/textPrice"
+                    android:text="6.75" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="85dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/color_big_box"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:text="0"
+                        android:textColor="#fff"
+                        android:textSize="15sp" />
+
+                    <TextView style="@style/井" />
+
+                    <TextView
+                        android:layout_width="2dp"
+                        android:layout_height="13dp"
+                        android:layout_marginTop="2.5dp"
+                        android:background="@drawable/brown_box" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_0_price"
+                    style="@style/textPrice"
+                    android:text="6.09" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <cn.ityun.com.carservice.view.RefreshListView
+            android:id="@+id/lv_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:divider="#f5f5f5"
+            android:dividerHeight="10dp"
+            android:listSelector="@android:color/transparent"
+            android:scrollbars="none"></cn.ityun.com.carservice.view.RefreshListView>
+    </LinearLayout>
+
+</LinearLayout>

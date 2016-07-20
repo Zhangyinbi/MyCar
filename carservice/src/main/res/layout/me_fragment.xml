@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="245dp"
+        android:background="@drawable/me_background"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <cn.ityun.com.carservice.view.CircleImageView
+            android:id="@+id/iv_head_pic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="90dp"
+            android:src="@mipmap/head_pic" />
+
+        <TextView
+            android:id="@+id/tv_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="点击登录"
+            android:textColor="#fff" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <cn.ityun.com.carservice.view.RefreshListView
+            android:id="@+id/lv_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:divider="#f5f5f5"
+            android:dividerHeight="12dp"
+            android:listSelector="@android:color/transparent"
+            android:scrollbars="none"></cn.ityun.com.carservice.view.RefreshListView>
+    </LinearLayout>
+
+</LinearLayout>

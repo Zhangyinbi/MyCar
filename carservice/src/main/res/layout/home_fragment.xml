@@ -3,7 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -97,7 +96,7 @@
                     android:id="@+id/ii"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="二手放心车"
+                    android:text="@string/used_car"
                     android:textColor="#333333"
                     android:textSize="14sp" />
 
@@ -106,7 +105,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/ii"
                     android:layout_marginTop="10dp"
-                    android:text="精选海量可靠车源"
+                    android:text="@string/select_mass_reliable_options_available"
                     android:textColor="#999999"
                     android:textSize="11sp" />
             </LinearLayout>
@@ -139,7 +138,7 @@
                     android:id="@+id/tv_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="维修保养"
+                    android:text="@string/repair_and_maintenance"
                     android:textColor="#333333"
                     android:textSize="14sp" />
 
@@ -148,7 +147,7 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/tv_text"
                     android:layout_marginTop="10dp"
-                    android:text="靠得住的养车服务"
+                    android:text="@string/reliable_car_ownership"
                     android:textColor="#999999"
                     android:textSize="11sp" />
             </LinearLayout>
@@ -186,13 +185,14 @@
                 android:layout_alignLeft="@id/v"
                 android:paddingTop="0dp"
                 android:layout_marginLeft="15dp"
-                android:text="新闻资讯"
+                android:text="@string/newsInfor"
                 android:textColor="#888888"
                 android:textSize="13sp" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="更多"
+                android:text="@string/checkMore"
+                android:id="@+id/tv_loadMore"
                 android:textColor="#0f97ee"
                 android:textSize="13sp"
                 android:layout_alignParentRight="true"
