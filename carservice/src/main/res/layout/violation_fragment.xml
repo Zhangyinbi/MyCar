@@ -39,9 +39,30 @@
             android:textSize="18sp" />
     </RelativeLayout>
 
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/ll_no_car"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/no_info"
+                />
+            <TextView
+                android:layout_marginTop="25dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="暂无帖子"
+                android:textColor="#bbb"
+                android:textSize="13sp"/>
+        </LinearLayout>
 
         <cn.ityun.com.carservice.view.RefreshListView
             android:id="@+id/lv_list"
@@ -51,5 +72,5 @@
             android:dividerHeight="10dp"
             android:listSelector="@android:color/transparent"
             android:scrollbars="none"></cn.ityun.com.carservice.view.RefreshListView>
-    </LinearLayout>
+    </FrameLayout>
 </LinearLayout>

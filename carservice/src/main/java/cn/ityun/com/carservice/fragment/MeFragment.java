@@ -1,7 +1,9 @@
 package cn.ityun.com.carservice.fragment;
 
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -23,7 +25,12 @@ public class MeFragment extends BaseFragment {
     public View initView() {
        View view =View.inflate(mActivity, R.layout.me_fragment,null);
         lvList = (RefreshListView) view.findViewById(R.id.lv_list);
-
+        lvList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Log.e("=======", "发现 "+position );
+            }
+        });
         return view;
     }
     @Override

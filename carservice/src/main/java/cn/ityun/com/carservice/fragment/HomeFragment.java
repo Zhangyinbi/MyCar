@@ -1,6 +1,7 @@
 package cn.ityun.com.carservice.fragment;
 
 import android.app.FragmentTransaction;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -8,7 +9,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import cn.ityun.com.carservice.MainActivity;
 import cn.ityun.com.carservice.R;
-import cn.ityun.com.carservice.home.CarListFragment;
+import cn.ityun.com.carservice.home.ViolationCarListFragment;
 
 /**
  * Created by Administrator on 2016/7/19 0019.
@@ -24,11 +25,10 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
     private RelativeLayout rlCars;
     private RelativeLayout rlService;
     private TextView tvLoadMore;
-    private MainActivity mainUi;
 
     @Override
     public View initView() {
-        mainUi = (MainActivity) mActivity;
+
         View view = View.inflate(mActivity, R.layout.home_fragment, null);
         newsList = (ListView) view.findViewById(R.id.lv_news_list);
         ivCheck = (ImageView) view.findViewById(R.id.iv_check);
@@ -113,7 +113,7 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
         FragmentTransaction ft = mainUi.fm.beginTransaction();
         ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
         if (i == 1) {
-            ft.replace(mainUi.flLayout.getId(), new CarListFragment());
+            ft.replace(mainUi.flLayout.getId(), new ViolationCarListFragment());
         }
         if (i == 2) {
             ft.replace(mainUi.flLayout.getId(), new FindFragment());
@@ -143,5 +143,6 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
     public void onResume() {
         super.onResume();
         mainUi.rGroup.setVisibility(View.VISIBLE);
+        Log.e("------------------", "第一个又回来了了" );
     }
 }
