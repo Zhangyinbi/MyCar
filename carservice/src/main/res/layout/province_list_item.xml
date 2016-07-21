@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+
+    android:gravity="center"
+    android:orientation="vertical">
+    <TextView
+        android:background="@drawable/green_box"
+        android:id="@+id/tv_province"
+        android:layout_width="140dp"
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textColor="#ef00"
+        android:textSize="25sp" />
+</LinearLayout>

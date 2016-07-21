@@ -82,7 +82,7 @@ public class RefreshListView extends ListView implements AdapterView.OnItemClick
                     mHeaderView.setPadding(0, padding, 0, 0);
 //                    return true;
                 } else {
-                    Log.e("-------", "onTouchEvent:"+dy);
+//                    Log.e("-------", "onTouchEvent:"+dy);
                     this.setPadding(0, dy, 0, 0);
                 }
                 break;
