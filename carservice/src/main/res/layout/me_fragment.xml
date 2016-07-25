@@ -13,18 +13,41 @@
 
         <cn.ityun.com.carservice.view.CircleImageView
             android:id="@+id/iv_head_pic"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="82dp"
+            android:layout_height="82dp"
             android:layout_marginTop="90dp"
             android:src="@mipmap/head_pic" />
 
-        <TextView
-            android:id="@+id/tv_login"
+        <FrameLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="点击登录"
-            android:textColor="#fff" />
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:paddingBottom="10dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="10dp"
+                android:text="点击登录"
+                android:textColor="#fff" />
+
+            <TextView
+                android:id="@+id/tv_use_name"
+                android:visibility="gone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:paddingBottom="10dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="10dp"
+                android:textColor="#fff" />
+        </FrameLayout>
+
+
     </LinearLayout>
 
     <LinearLayout

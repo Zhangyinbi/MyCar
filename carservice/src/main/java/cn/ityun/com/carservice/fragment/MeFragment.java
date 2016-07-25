@@ -1,5 +1,6 @@
 package cn.ityun.com.carservice.fragment;
 
+import android.content.Intent;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,8 +12,10 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import cn.ityun.com.carservice.LoadActivity;
 import cn.ityun.com.carservice.R;
 import cn.ityun.com.carservice.bean.FindInfo;
+import cn.ityun.com.carservice.view.CircleImageView;
 import cn.ityun.com.carservice.view.RefreshListView;
 
 /**
@@ -21,18 +24,41 @@ import cn.ityun.com.carservice.view.RefreshListView;
 public class MeFragment extends BaseFragment {
     private ArrayList<FindInfo> list;
     private RefreshListView lvList;
+    private CircleImageView ivHeadPic;
+    private String TAG = "---------------";
+    private TextView tvLogin;
+
     @Override
     public View initView() {
-       View view =View.inflate(mActivity, R.layout.me_fragment,null);
+        View view = View.inflate(mActivity, R.layout.me_fragment, null);
         lvList = (RefreshListView) view.findViewById(R.id.lv_list);
         lvList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Log.e("=======", "发现 "+position );
+                Log.e("=======", "发现 " + position);
+            }
+        });
+        ivHeadPic = (CircleImageView) view.findViewById(R.id.iv_head_pic);
+        ivHeadPic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.e(TAG, "ivHeadPic: ");
+                //修改本人信息点击
+            }
+        });
+
+        tvLogin = (TextView) view.findViewById(R.id.tv_login);
+        tvLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mActivity, LoadActivity.class);
+                startActivity(intent);
+//                mActivity.overridePendingTransition(R.anim.push_left_in, R.anim.push_left_out);
             }
         });
         return view;
     }
+
     @Override
     public void initData() {
         list = new ArrayList<FindInfo>();

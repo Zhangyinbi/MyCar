@@ -7,9 +7,9 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import cn.ityun.com.carservice.MainActivity;
+
 import cn.ityun.com.carservice.R;
-import cn.ityun.com.carservice.home.ViolationCarListFragment;
+import cn.ityun.com.carservice.homefragment.ViolationCarListFragment;
 
 /**
  * Created by Administrator on 2016/7/19 0019.

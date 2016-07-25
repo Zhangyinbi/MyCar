@@ -11,12 +11,19 @@ public class Privince {
     public class type{
         public ArrayList<Sheng> data;
         public class  Sheng{
+            public ArrayList<City> list;
             public String carorg;
             public String engineno;
             public String frameno;
             public String lsnum;
             public String lsprefix;
             public String province;
+            public class City{
+                public String carorg;
+                public String city;
+                public String lsnum;
+
+            }
         }
     }
 
