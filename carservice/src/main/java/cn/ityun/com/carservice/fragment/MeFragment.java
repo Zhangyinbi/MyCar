@@ -1,6 +1,8 @@
 package cn.ityun.com.carservice.fragment;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,11 +29,13 @@ public class MeFragment extends BaseFragment {
     private CircleImageView ivHeadPic;
     private String TAG = "---------------";
     private TextView tvLogin;
+    private TextView tvUseName;
 
     @Override
     public View initView() {
         View view = View.inflate(mActivity, R.layout.me_fragment, null);
         lvList = (RefreshListView) view.findViewById(R.id.lv_list);
+        tvUseName = (TextView) view.findViewById(R.id.tv_use_name);
         lvList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -61,6 +65,13 @@ public class MeFragment extends BaseFragment {
 
     @Override
     public void initData() {
+        SharedPreferences sp = mActivity.getSharedPreferences("userinfo", Context.MODE_PRIVATE);
+        boolean flag = sp.getBoolean("flag", false);
+        if (flag){
+            tvLogin.setVisibility(View.GONE);
+            tvUseName.setVisibility(View.VISIBLE);
+            tvUseName.setText(sp.getString("nickname",""));
+        }
         list = new ArrayList<FindInfo>();
         list.add(new FindInfo(R.mipmap.my_car, "我的车辆", ""));
         list.add(new FindInfo(R.mipmap.my_collect, "我的收藏", ""));

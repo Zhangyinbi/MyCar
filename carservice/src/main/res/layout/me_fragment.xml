@@ -37,6 +37,7 @@
             <TextView
                 android:id="@+id/tv_use_name"
                 android:visibility="gone"
+                android:text="年活动i阿訇地啊哈地上"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"

@@ -1,5 +1,7 @@
 package cn.ityun.com.carservice.mefragment;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Handler;
 import android.os.Message;
@@ -13,10 +15,20 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.lang.reflect.Method;
+
 import cn.ityun.com.carservice.R;
+import cn.ityun.com.carservice.global.DataInterface;
+import cn.ityun.com.carservice.utils.MyApplication;
 import cn.smssdk.EventHandler;
 import cn.smssdk.SMSSDK;
 
@@ -47,7 +59,7 @@ public class RegisterFragment extends BaseFragment {
         btnRegister = (Button) view.findViewById(R.id.btn_register);
         mHandler = new Handler() {
             @Override
-            public void handleMessage( Message msg) {
+            public void handleMessage(final Message msg) {
                 if (msg.what==1){
                     tvCode.setText("重新获取");
                     tvCode.setTextColor(Color.parseColor("#77000000"));
@@ -55,7 +67,7 @@ public class RegisterFragment extends BaseFragment {
                     mHandler.removeMessages(0);
                     String  result = (String) msg.obj;
                     if (result==null){
-                        Toast.makeText(mActivity,"注册失败",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(mActivity,"获取验证码失败，请重新获取",Toast.LENGTH_SHORT).show();
                         count=59;
                         return;
                     }
@@ -73,7 +85,46 @@ public class RegisterFragment extends BaseFragment {
                     //注册成功之后的操作，把账号密码上传至服务器，并在本地保存一份，切设置一个状态用来
                     //记录当前是否是登录状态，在记录一个开始时间，以后每次登陆也记录一个时间，当时间间隔相差15天时
                     //让用户重新登陆
-
+                    String url= DataInterface.SERVER_UPLOAD+"userAction_addUser.action?phone="+etPhoneNum.getText().toString().trim()+"&password="+etPassword.getText().toString().trim();
+                    RequestQueue queues = MyApplication.queues;
+                    StringRequest request=new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+                        /**
+                         * @param s
+                         */
+                        @Override
+                        public void onResponse(String s) {
+                            try {
+                                JSONObject json=new JSONObject(s);
+                                int  code = Integer.parseInt(json.getString("code"));
+                                if (code==0){
+                                    JSONObject data = json.getJSONObject("data");
+                                    SharedPreferences sp=mActivity.getSharedPreferences("userinfo", Context.MODE_PRIVATE);
+                                    SharedPreferences.Editor edit = sp.edit();
+                                    edit.putString("username",etPhoneNum.getText().toString().trim());
+                                    edit.putString("password",etPassword.getText().toString().trim());
+                                    edit.putInt("id",data.getInt("id"));
+                                    edit.putString("nickname",data.getString("userName"));
+                                    edit.commit();
+                                    getFragmentManager().popBackStack();
+                                }else {
+                                    if (json.getString("errorMessage").equals("电话已存在！")){
+                                        getFragmentManager().popBackStack();
+                                    }else {
+                                        Toast.makeText(mActivity,json.getString("errorMessage"),Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                                Toast.makeText(mActivity,"注册失败",Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    }, new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError volleyError) {
+                            Toast.makeText(mActivity,"注册失败",Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                    queues.add(request);
 
                 }
 
