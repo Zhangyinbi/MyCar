@@ -13,12 +13,14 @@ import android.graphics.Shader;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 
 import cn.ityun.com.carservice.R;
+import cn.ityun.com.carservice.view.image.SmartImageView;
 
-public class CircleImageView extends ImageView {
+public class CircleImageView extends SmartImageView {
 
     private static final ScaleType SCALE_TYPE = ScaleType.CENTER_CROP;
 
@@ -144,7 +146,12 @@ public class CircleImageView extends ImageView {
         mBitmap = getBitmapFromDrawable(drawable);
         setup();
     }
-
+    @Override
+    public void setImageURI(Uri uri) {
+        super.setImageURI(uri);
+        mBitmap = getBitmapFromDrawable(getDrawable());
+        setup();
+    }
     @Override
     public void setImageResource(int resId) {
         super.setImageResource(resId);
