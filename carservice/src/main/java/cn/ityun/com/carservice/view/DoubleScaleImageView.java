@@ -158,7 +158,7 @@ public class DoubleScaleImageView extends ImageView implements View.OnTouchListe
   /**
    * 移动图片时进行边界检查
    * @description：
-   * @date 2016-1-8 下午4:02:24
+   * @date 2016-one-8 下午4:02:24
    */
   private void checkTranslateWithBorder() {
     RectF rectf = getMatrixRectf();
@@ -187,7 +187,7 @@ public class DoubleScaleImageView extends ImageView implements View.OnTouchListe
   /**
    * 获取图片的位置
    * @description：
-   * @date 2016-1-8 上午9:02:10
+   * @date 2016-one-8 上午9:02:10
    */
   private RectF getMatrixRectf() {
     Matrix matrix = mScaleMatrix;

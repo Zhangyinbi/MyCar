@@ -3,6 +3,7 @@ package cn.ityun.com.carservice.mefragment;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Handler;
 import android.os.Message;
 import android.text.InputType;
@@ -24,11 +25,11 @@ import com.android.volley.toolbox.StringRequest;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.lang.reflect.Method;
 
 import cn.ityun.com.carservice.R;
 import cn.ityun.com.carservice.global.DataInterface;
 import cn.ityun.com.carservice.utils.MyApplication;
+import cn.ityun.com.carservice.utils.Utils;
 import cn.smssdk.EventHandler;
 import cn.smssdk.SMSSDK;
 
@@ -67,7 +68,8 @@ public class RegisterFragment extends BaseFragment {
                     mHandler.removeMessages(0);
                     String  result = (String) msg.obj;
                     if (result==null){
-                        Toast.makeText(mActivity,"获取验证码失败，请重新获取",Toast.LENGTH_SHORT).show();
+                        Utils.showToast(mActivity,"获取验证码失败，请重新获取");
+//                        Toast.makeText(mActivity,"获取验证码失败，请重新获取",Toast.LENGTH_SHORT).show();
                         count=59;
                         return;
                     }
@@ -77,7 +79,8 @@ public class RegisterFragment extends BaseFragment {
                     return;
                 }
                 if (msg.what==2){
-                    Toast.makeText(mActivity,"验证码已发送至您手机，请注意查收",Toast.LENGTH_SHORT).show();
+                    Utils.showToast(mActivity,"验证码已发送至您手机，请注意查收");
+//                    Toast.makeText(mActivity,"验证码已发送至您手机，请注意查收",Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -93,6 +96,7 @@ public class RegisterFragment extends BaseFragment {
                          */
                         @Override
                         public void onResponse(String s) {
+                            Log.e("------------", s );
                             try {
                                 JSONObject json=new JSONObject(s);
                                 int  code = Integer.parseInt(json.getString("code"));
@@ -104,6 +108,7 @@ public class RegisterFragment extends BaseFragment {
                                     edit.putString("password",etPassword.getText().toString().trim());
                                     edit.putInt("id",data.getInt("id"));
                                     edit.putString("nickname",data.getString("userName"));
+                                    edit.putString("headPic","default.jpg");
                                     edit.commit();
                                     getFragmentManager().popBackStack();
                                 }else {
@@ -115,13 +120,15 @@ public class RegisterFragment extends BaseFragment {
                                 }
                             } catch (JSONException e) {
                                 e.printStackTrace();
-                                Toast.makeText(mActivity,"注册失败",Toast.LENGTH_SHORT).show();
+                                Utils.showToast(mActivity,"注册失败");
+//                                Toast.makeText(mActivity,"注册失败",Toast.LENGTH_SHORT).show();
                             }
                         }
                     }, new Response.ErrorListener() {
                         @Override
                         public void onErrorResponse(VolleyError volleyError) {
-                            Toast.makeText(mActivity,"注册失败",Toast.LENGTH_SHORT).show();
+                            Utils.showToast(mActivity,"注册失败");
+//                            Toast.makeText(mActivity,"注册失败",Toast.LENGTH_SHORT).show();
                         }
                     });
                     queues.add(request);
@@ -191,24 +198,27 @@ public class RegisterFragment extends BaseFragment {
             @Override
             public void onClick(View v) {
                 phoneNum = etPhoneNum.getText().toString().trim();
-                if (phoneNum.length()==11){
-                    SMSSDK.initSDK(mActivity, "155bff5f6ce3a", "bcb8c69b2d68ab969a3aa608dfbc32ed");
+                if (phoneNum!=null&&phoneNum.length()==11){
+//                    SMSSDK.initSDK(mActivity, "155bff5f6ce3a", "bcb8c69b2d68ab969a3aa608dfbc32ed");
                 }else {
-                    Toast.makeText(mActivity,"请输入正确的手机号码",Toast.LENGTH_SHORT).show();
+                    Utils.showToast(mActivity,"请输入正确的手机号码");
+//                    Toast.makeText(mActivity,"请输入正确的手机号码",Toast.LENGTH_SHORT).show();
                     return;
                 }
                 String trim = etCode.getText().toString().trim();
                 if (TextUtils.isEmpty(trim)){
-                    Toast.makeText(mActivity,"请输入验证码",Toast.LENGTH_SHORT).show();
+                    Utils.showToast(mActivity,"请输入验证码");
+//                    Toast.makeText(mActivity,"请输入验证码",Toast.LENGTH_SHORT).show();
                     return;
                 }
                 String pwd = etPassword.getText().toString().trim();
                 if (TextUtils.isEmpty(pwd)){
-                    Toast.makeText(mActivity,"请输入密码",Toast.LENGTH_SHORT).show();
+                    Utils.showToast(mActivity,"请输入密码");
+//                    Toast.makeText(mActivity,"请输入密码",Toast.LENGTH_SHORT).show();
                     return;
                 }
                 SMSSDK.submitVerificationCode("86",phoneNum,trim);
-                Log.e("-----------", "phoneNum: "+phoneNum+",trim" +trim);
+//                Log.e("-----------", "phoneNum: "+phoneNum+",trim" +trim);
                 SMSSDK.registerEventHandler(eh);
             }
         });
@@ -224,11 +234,12 @@ public class RegisterFragment extends BaseFragment {
                     tvCode.setClickable(false);
                 }
                 if (phoneNum.length()==11){
-                    SMSSDK.initSDK(mActivity, "155bff5f6ce3a", "bcb8c69b2d68ab969a3aa608dfbc32ed");
+//                    SMSSDK.initSDK(mActivity, "155bff5f6ce3a", "bcb8c69b2d68ab969a3aa608dfbc32ed");
                     SMSSDK.getVerificationCode("86", phoneNum);
                     mHandler.sendEmptyMessageDelayed(0, 1000);
                 }else {
-                    Toast.makeText(mActivity,"请输入正确的手机号码",Toast.LENGTH_SHORT).show();
+                    Utils.showToast(mActivity,"请输入正确的手机号码");
+//                    Toast.makeText(mActivity,"请输入正确的手机号码",Toast.LENGTH_SHORT).show();
                     tvCode.setClickable(true);
                 }
 
@@ -239,7 +250,7 @@ public class RegisterFragment extends BaseFragment {
             @Override
             public void onClick(View v) {
                 getFragmentManager().popBackStack();
-            }
+        }
         });
         ivIsShowPassword.setOnClickListener(new View.OnClickListener() {
             @Override

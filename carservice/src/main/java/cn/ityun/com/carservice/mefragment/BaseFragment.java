@@ -14,7 +14,7 @@ import cn.ityun.com.carservice.R;
 
 /**
  * 基类BaseFragment,所有Fragment继承此类
- * 1.定义Activity变量，方便自类使用
+ * one.定义Activity变量，方便自类使用
  * 2.定义抽象方法initView() 初始化布局，必须实现
  * 3.定义方法initData()，初始化数据，可以不实现
  * Created by Administrator on 2016/2/4 0004.
