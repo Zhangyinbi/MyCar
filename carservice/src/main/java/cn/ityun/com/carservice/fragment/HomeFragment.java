@@ -84,7 +84,6 @@ public class HomeFragment extends BaseFragment implements View.OnClickListener {
             @Override
             public void setData(AMapLocationClient mLocationClient, AMapLocation amapLocation) {
                 HomeFragment.this.mLocationClient = mLocationClient;
-                Log.e("666666666666666666", amapLocation.getAddress() );
                 RequestQueue queues = MyApplication.queues;
                 String url = "http://route.showapi.com/9-2?showapi_appid=20576&&showapi_sign=31d63c00b46841a8811483c04a4c7e56&&area=" + amapLocation.getCity();
                 StringRequest request = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
