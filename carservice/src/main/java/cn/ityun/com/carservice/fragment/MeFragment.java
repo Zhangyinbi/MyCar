@@ -3,6 +3,7 @@ package cn.ityun.com.carservice.fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.support.design.widget.Snackbar;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -39,23 +41,36 @@ public class MeFragment extends BaseFragment {
     @Override
     public View initView() {
         sp = mActivity.getSharedPreferences("userinfo", Context.MODE_PRIVATE);
-        View view = View.inflate(mActivity, R.layout.me_fragment, null);
-        lvList = (RefreshListView) view.findViewById(R.id.lv_list);
-        tvUseName = (TextView) view.findViewById(R.id.tv_use_name);
+        final View view1 = View.inflate(mActivity, R.layout.me_fragment, null);
+        lvList = (RefreshListView) view1.findViewById(R.id.lv_list);
+        tvUseName = (TextView) view1.findViewById(R.id.tv_use_name);
 
         lvList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                flag = sp.getBoolean("flag", false);
+                if (!flag){
+                    Utils.showToast(mActivity,"请先登陆");
+                    return;
+                }
+
                 if (position == 2) {
                     mainUi.rGroup.setVisibility(View.GONE);
                     jumpFragment(new PostFragment(), true);
-                }
-                else {
-                    Utils.showToast(mActivity,"别乱点");
+                }else {
+                    Snackbar.make(view,"SORRY", Snackbar.LENGTH_LONG)
+                        .setAction("cancel", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                //这里的单击事件代表点击消除Action后的响应事件
+                                Toast.makeText(mActivity.getApplicationContext(),"我被点击了",Toast.LENGTH_SHORT).show();
+                            }
+                        }).show();
+//                    Utils.showToast(mActivity,"别乱点");
                 }
             }
         });
-        ivHeadPic = (CircleImageView) view.findViewById(R.id.iv_head_pic);
+        ivHeadPic = (CircleImageView) view1.findViewById(R.id.iv_head_pic);
         ivHeadPic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -70,10 +85,10 @@ public class MeFragment extends BaseFragment {
             }
         });
 
-        tvLogin = (TextView) view.findViewById(R.id.tv_login);
+        tvLogin = (TextView) view1.findViewById(R.id.tv_login);
 
 
-        return view;
+        return view1;
     }
 
     @Override
