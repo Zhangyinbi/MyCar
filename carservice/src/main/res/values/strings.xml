@@ -1,0 +1,29 @@
+<resources>
+    <string name="only_choose_num">超出可选图片张数</string>
+    <string name="finish">完成</string>
+    <string name="invalidSD">sdcard无效或没有插入！</string>
+    <string name="photo">选择相册</string>
+    <string name="album">相册</string>
+    <string name="preview">预览</string>
+    <string name="unfinished">完成</string>
+    <string name="camera_cancel">取消</string>
+    <string name="no_photo">相册没有图片</string>
+    <string name="app_name">CarService</string>
+    <string name="home">首页</string>
+    <string name="find">发现</string>
+    <string name="my">我的</string>
+    <string name="violationCheek">违章查询</string>
+    <string name="gasStation">加油站</string>
+    <string name="nearbyClearCar">附近洗车</string>
+    <string name="heightSpeedRoad">高速路况</string>
+    <string name="newsInfor">新闻资讯</string>
+    <string name="checkMore">更多</string>
+    <string name="reliable_car_ownership">靠得住的养车服务</string>
+    <string name="repair_and_maintenance">维修保养</string>
+    <string name="select_mass_reliable_options_available">精选海量可靠车源</string>
+    <string name="used_car">二手放心车</string>
+    <string name="zhengzhou">郑州</string>
+    <string name="today_oil_price">今日油价</string>
+    <string name="car_list">车辆列表</string>
+    <string name="Add_Car_info">添加车辆</string>
+</resources>
